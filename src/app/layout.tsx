@@ -26,8 +26,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        // className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+      <nav className="text-white py-2 font-bold bg-black px-5">
+        <h1>
+          <span className="text-4xl">M</span>
+          <span className="text-2xl">onalisa</span>
+        </h1>
+      </nav>
+    
         {children}
       </body>
     </html>
