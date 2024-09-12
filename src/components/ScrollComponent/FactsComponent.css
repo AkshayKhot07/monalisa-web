@@ -1,0 +1,6 @@
+.facts-background {
+    background-color: #0b1215;
+    opacity: 0.8;
+    background-image: radial-gradient(#FFFFFF 0.5px, #0b1215 0.5px);
+    background-size: 10px 10px;    
+}

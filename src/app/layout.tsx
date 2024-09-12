@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import Link from "next/link";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -29,13 +30,34 @@ export default function RootLayout({
         // className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
       <nav className="text-white py-2 font-bold bg-black px-5">
+        <Link href={"/"}>
         <h1>
           <span className="text-4xl">M</span>
           <span className="text-2xl">onalisa</span>
         </h1>
+        </Link>
       </nav>
     
         {children}
+
+        <footer className="bg-black py-4 px-4 border-t-[1px] border-gray-500 border-opacity-50 flex justify-between items-center">
+          <div className="text-white">
+            <p>
+            <span>© Copyright</span>  
+            <span> {new Date().getFullYear()}</span>
+            <span>, French Republic Ltd. All rights reserved.</span>
+            </p>
+            <p>Room 701, Level One Denon Aisle of the Louvre Museum in Paris, France.</p>
+          </div>
+          <div className="text-white">
+            <p className="flex gap-2">
+              <span>
+              Powered by
+              </span>
+              <span className="text-blue-500 font-bold">Leonardo Da Vinci</span>
+              </p>
+          </div>
+        </footer>
       </body>
     </html>
   );
