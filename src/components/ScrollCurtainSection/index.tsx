@@ -1,6 +1,8 @@
 "use client";
 import { useEffect, useRef } from "react";
-import "./ScrollCurtainSection.css"
+import "./ScrollCurtainSection.css";
+import ParallaxTiltEffect from "../ParallaxTiltEffect";
+import classNames from "classnames";
 
 const ScrollCurtainSection = () => {
   const curtainSectionRef = useRef<HTMLDivElement>(null);
@@ -57,7 +59,7 @@ const ScrollCurtainSection = () => {
 
   return (
     <div
-    id="curtain-section"
+      id="curtain-section"
       ref={curtainSectionRef}
       className="curtain-section relative w-full h-[300vh]" // Increased height to ensure enough scroll room
     >
@@ -66,16 +68,35 @@ const ScrollCurtainSection = () => {
         className="curtain-wrapper w-full h-[100vh] sticky top-0 z-[20] overflow-hidden flex"
       >
         <div className="curtain-animate w-full h-full relative flex items-center justify-center">
-
           <div className="w-full h-full relative flex items-center justify-center dots-background">
-            <img
+            {/* <img
               src="/images/monalisa/mona-pngframe.png"
               alt=""
               className="w-[700px] hover-img"
-            />
+            /> */}
+            <div>
+              <p
+                className={classNames(
+                  "text-4xl font-bold",
+                  "inline-block text-[#FFFFFF] px-1 -mx-1 transition-shadow duration-500 ease-in-out hover:text-blue-600 hover:shadow-hover-custom"
+                )}
+              >
+                {"I'm the real one"}
+              </p>
+            </div>
+            <ParallaxTiltEffect />
+            <div>
+              <p
+                className={classNames(
+                  "text-4xl font-bold",
+                  "inline-block text-[#FFFFFF] px-1 -mx-1 transition-shadow duration-500 ease-in-out hover:text-yellow-500 hover:shadow-hover-custom"
+                )}
+              >
+                {"Hover over her"}
+              </p>
+            </div>
           </div>
 
-          
           <img
             ref={leftCurtainRef}
             src="/images/curtains/left-curtain.png"

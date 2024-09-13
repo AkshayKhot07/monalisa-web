@@ -18,33 +18,31 @@ const HeroSection = () => {
   const [slideIndex, setSlideIndex] = useState(0);
   const slidesRef = useRef<(HTMLDivElement | null)[]>([]);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
-  
-  // useEffect(() => {
-  //   const autoPlayInterval = setInterval(
-  //     autoPlaySlider,
-  //     HeroSectionSliderSettings.autoPlayInterval * 1000
-  //   );
-  //   return () => clearInterval(autoPlayInterval);
-  // }, []);
- 
-  
+
+  //Run on initial load
   useEffect(() => {
-    // Set up the interval for autoplay
+    const autoPlayInterval = setTimeout(autoPlaySlider, 1000);
+    return () => clearInterval(autoPlayInterval);
+  }, []);
+
+  // Set up the interval for autoplay
+  useEffect(() => {
     intervalRef.current = setInterval(
       autoPlaySlider,
       HeroSectionSliderSettings.autoPlayInterval * 1000
     );
 
+    // Set up the interval for autoplay
     return () => {
-      // Clear the interval on component unmount
       if (intervalRef.current) {
         clearInterval(intervalRef.current);
       }
     };
   }, []);
 
+  // Clear the existing interval and set up a new one when the slideIndex changes on arrow clicks -- Disabled
+  /*
   useEffect(() => {
-    // Clear the existing interval and set up a new one when the slideIndex changes
     if (intervalRef.current) {
       clearInterval(intervalRef.current);
     }
@@ -59,7 +57,7 @@ const HeroSection = () => {
       }
     };
   }, [slideIndex]);
-  
+*/
 
   const autoPlaySlider = () => {
     setSlideIndex((prevIndex) =>
@@ -86,7 +84,7 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="glider">
+    <section className="hero-section">
       <div className="relative">
         <div className="relative w-full h-[550px] overflow-hidden">
           {/* Slide 1 */}
@@ -184,7 +182,7 @@ const HeroSection = () => {
           </div>
         </div>
 
-        <button
+        {/*<button
           className="absolute top-1/2 transform -translate-y-1/2 left-0 p-4 text-white font-bold bg-black bg-opacity-50 hover:bg-opacity-80"
           onClick={() => handleSlideChange(-1)}
         >
@@ -195,7 +193,7 @@ const HeroSection = () => {
           onClick={() => handleSlideChange(1)}
         >
           ❯
-        </button>
+        </button>*/}
       </div>
     </section>
   );

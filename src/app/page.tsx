@@ -13,10 +13,6 @@ export default function Home() {
       <ScrollCurtainSection />
       <ScrollComponent />
       <FlashlightEffect />
-
-      {/* <div className="bg-gray-300 h-[100vh]">
-
-      </div> */}
     </div>
   );
 }
