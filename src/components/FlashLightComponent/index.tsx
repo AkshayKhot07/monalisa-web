@@ -46,11 +46,46 @@ const FlashlightEffect = () => {
     []
   );
 
+  const handleTouchMove = useCallback(
+    (e: React.TouchEvent<HTMLDivElement | HTMLElement>) => {
+      if (sectionRef.current) {
+        const rect = sectionRef.current.getBoundingClientRect();
+        const x = e.touches[0].clientX - rect.left;
+        const y = e.touches[0].clientY - rect.top;
+        setMousePosition({ x, y });
+
+        // Check if touch is over button area
+        if (buttonRef.current) {
+          const buttonRect = buttonRef.current.getBoundingClientRect();
+          const isOverButton =
+            x >= buttonRect.left - rect.left &&
+            x <= buttonRect.right - rect.left &&
+            y >= buttonRect.top - rect.top &&
+            y <= buttonRect.bottom - rect.top;
+          setIsButtonVisible(isOverButton);
+        }
+
+        // Check if touch is over seek text
+        if (seekRef.current) {
+          const seekRect = seekRef.current.getBoundingClientRect();
+          const isOverSeekText =
+            x >= seekRect.left - rect.left &&
+            x <= seekRect.right - rect.left &&
+            y >= seekRect.top - rect.top &&
+            y <= seekRect.bottom - rect.top;
+          setSeekHover(isOverSeekText);
+        }
+      }
+    },
+    []
+  );
+
   return (
     <section
       ref={sectionRef}
       className="relative overflow-hidden bg-white min-h-screen font-sans"
       onMouseMove={handleMouseMove}
+      onTouchMove={handleTouchMove}
     >
       <div className="container">
         <div

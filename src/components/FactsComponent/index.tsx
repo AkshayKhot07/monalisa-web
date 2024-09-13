@@ -14,12 +14,12 @@ const FactsComponent = () => {
   return (
     <section
       className={classNames(
-        "relative hidden  h-full flex-col items-center  lg:flex lg:h-[400vh] bg-[#0b1215]"
+        "relative flex-col items-center flex h-[400vh] bg-[#0b1215]"
       )}
       ref={divRef}
     >
       <div className="container sticky top-10 flex w-full min-h-[100vh] flex-col items-center justify-center  gap-[99px]  overflow-hidden">
-        <div className="flex py-5 w-[80%] items-center">
+        <div className="flex py-5 w-[80%] items-center gap-5">
           <div className=" h-[300px] w-full flex items-center justify-start">
             {current === 0 && (
               <div className="flex flex-col items-center justify-start gap-2">
@@ -66,7 +66,7 @@ const FactsComponent = () => {
               </div>
             )}
           </div>
-          <div className="w-full flex items-center justify-center">
+          <div className="w-full hidden md:flex items-center justify-center">
             {current === 0 && (
               <div className="p-5 bg-white rounded-md">
                 <img

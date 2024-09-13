@@ -34,8 +34,33 @@ const ParallaxTiltEffect = () => {
       });
     };
 
+    const handleTouchMove = (event: TouchEvent) => {
+      const rect = container.getBoundingClientRect();
+      const touch = event.touches[0];
+      const offsetX = touch.clientX - rect.left;
+      const offsetY = touch.clientY - rect.top;
+      const w = container.offsetWidth;
+      const h = container.offsetHeight;
+
+      const X = (offsetX - w / 2) / 3 / 3;
+      const Y = -(offsetY - h / 2) / 3 / 3;
+
+      setTiltValues({
+        rY: X,
+        rX: Y,
+        bX: 50 - Y / 4,
+        bY: 80 - X / 4,
+      });
+    };
+
     const handleMouseEnter = () => setIsActive(true);
+    const handleTouchStart = () => setIsActive(true);
+
     const handleMouseLeave = () => {
+      setIsActive(false);
+      setTiltValues({ rX: 0, rY: 0, bX: 50, bY: 80 });
+    };
+    const handleTouchEnd = () => {
       setIsActive(false);
       setTiltValues({ rX: 0, rY: 0, bX: 50, bY: 80 });
     };
@@ -43,11 +68,17 @@ const ParallaxTiltEffect = () => {
     container.addEventListener("mousemove", handleMouseMove);
     container.addEventListener("mouseenter", handleMouseEnter);
     container.addEventListener("mouseleave", handleMouseLeave);
+    container.addEventListener("touchmove", handleTouchMove);
+    container.addEventListener("touchstart", handleTouchStart);
+    container.addEventListener("touchend", handleTouchEnd);
 
     return () => {
       container.removeEventListener("mousemove", handleMouseMove);
       container.removeEventListener("mouseenter", handleMouseEnter);
       container.removeEventListener("mouseleave", handleMouseLeave);
+      container.removeEventListener("touchmove", handleTouchMove);
+      container.removeEventListener("touchstart", handleTouchStart);
+      container.removeEventListener("touchend", handleTouchEnd);
     };
   }, []);
 
@@ -63,7 +94,7 @@ const ParallaxTiltEffect = () => {
               ? "transition-none"
               : "transition-transform duration-600 ease-out"
           }
-          before:content-[''] before:absolute before:inset-8  before:transition-all before:duration-300
+          before:content-[''] before:absolute before:inset-8 before:transition-all before:duration-300
           hover:before:inset-4
         `}
         style={{
