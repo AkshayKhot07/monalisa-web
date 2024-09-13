@@ -2,6 +2,7 @@
 
 import { monalisaImagesStrip } from "@/constants/data";
 import { InfiniteLooper } from "./InfiniteLooper";
+import Image from "next/image";
 
 const InfiniteLoopPhotogrid = () => {
   return (
@@ -15,8 +16,8 @@ const InfiniteLoopPhotogrid = () => {
       <InfiniteLooper speed={30} direction="right">
         <div className="flex gap-2 p-2 bg-black">
           {monalisaImagesStrip?.map((item) => (
-            <div key={item} className="w-[200px] h-[200px]">
-              <img src={item} className="w-full h-full" />
+            <div key={item} className="relative w-[200px] h-[200px]">
+              <Image src={item} layout="fill" alt="image-grid" />
             </div>
           ))}
         </div>

@@ -1,7 +1,8 @@
 import FlashlightEffect from "@/components/FlashLightComponent";
 import HeroSection from "@/components/HeroSection";
 import InfiniteLoopPhotogrid from "@/components/InfiniteLoopPhotogrid";
-import ScrollComponent from "@/components/ScrollComponent";
+import FactsComponent from "@/components/FactsComponent";
+
 
 import ScrollCurtainSection from "@/components/ScrollCurtainSection";
 
@@ -11,7 +12,7 @@ export default function Home() {
       <HeroSection />
       <InfiniteLoopPhotogrid />
       <ScrollCurtainSection />
-      <ScrollComponent />
+      <FactsComponent />
       <FlashlightEffect />
     </div>
   );

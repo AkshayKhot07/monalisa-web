@@ -1,29 +1,24 @@
 "use client";
 import useScrollSection from "@/hooks/useScrollSection";
 import classNames from "classnames";
-import "./FactsComponent.css";
 import {
-  MONALISA_GRID_IMAGE1,
   MONALISA_GRID_IMAGE2,
-  MONALISA_GRID_IMAGE3,
   MONALISA_GRID_IMAGE4,
   MONALISA_GRID_IMAGE5,
   MONALISA_GRID_IMAGE6,
 } from "@/constants/images";
 
-const ScrollComponent = () => {
+const FactsComponent = () => {
   const { divRef, current, scrollPercent } = useScrollSection();
 
-  console.log({ current, scrollPercent });
-
   return (
-    <div
+    <section
       className={classNames(
         "relative hidden  h-full flex-col items-center  lg:flex lg:h-[400vh] bg-[#0b1215]"
       )}
       ref={divRef}
     >
-      <div className="sticky top-10 flex w-full min-h-[100vh] flex-col items-center justify-center  gap-[99px]  overflow-hidden">
+      <div className="container sticky top-10 flex w-full min-h-[100vh] flex-col items-center justify-center  gap-[99px]  overflow-hidden">
         <div className="flex py-5 w-[80%] items-center">
           <div className=" h-[300px] w-full flex items-center justify-start">
             {current === 0 && (
@@ -43,7 +38,8 @@ const ScrollComponent = () => {
                   Strange fact about the painting
                 </h2>
                 <p className="text-lg text-[#64748b]  italic">
-                The painting is thought to be of Lisa Gherardini, the wife of Francesco del Giocondo
+                  The painting is thought to be of Lisa Gherardini, the wife of
+                  Francesco del Giocondo
                 </p>
               </div>
             )}
@@ -109,73 +105,9 @@ const ScrollComponent = () => {
             )}
           </div>
         </div>
-        {/* <div className="relative grid grid-cols-4 gap-6">
-          <div
-            className={classNames(
-              "absolute h-full w-[calc(25%-24px)] rounded-lg border-[3px] border-primary-1 shadow-lg shadow-[#0E0F11] transition-all duration-500",
-              current === 0
-                ? "left-0"
-                : current === 1
-                ? "left-[calc(25%+12px)]"
-                : current === 2
-                ? "left-[calc(50%+12px)]"
-                : "left-[calc(75%+12px)]"
-            )}
-          />
-          {sliderData.map((item, index) => (
-            <div
-              key={item?.title}
-              className="flex flex-col items-center  gap-6 p-6"
-            >
-              <div
-                className={classNames(
-                  "relative h-[69px] w-[69px] rounded-lg",
-                  current === index
-                    ? "bg-primary-1 fill-white"
-                    : "bg-light-text-2 fill-primary-1"
-                )}
-              >
-                {current === index ? (
-                  <Image
-                    src={item?.iconOne}
-                    alt={item?.alt}
-                    fill
-                    className="object-contain p-3"
-                  />
-                ) : (
-                  <Image
-                    src={item?.iconTwo}
-                    alt={item?.alt}
-                    fill
-                    className="object-contain p-3"
-                  />
-                )}
-              </div>
-
-              <div className="flex flex-col items-center justify-center gap-4">
-                <h3
-                  className={classNames(
-                    "text-2xl font-[600]",
-                    current === index ? "text-white" : "text-light-text-5"
-                  )}
-                >
-                  {item.title}
-                </h3>
-                <p
-                  className={classNames(
-                    "text-justify text-sm font-[600] leading-6 ",
-                    current === index ? "text-white" : "text-light-text-5"
-                  )}
-                >
-                  {item.description}
-                </p>
-              </div>
-            </div>
-          ))}
-        </div> */}
       </div>
-    </div>
+    </section>
   );
 };
 
-export default ScrollComponent;
+export default FactsComponent;

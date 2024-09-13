@@ -1,6 +1,5 @@
 "use client";
 import { useEffect, useRef } from "react";
-import "./ScrollCurtainSection.css";
 import ParallaxTiltEffect from "../ParallaxTiltEffect";
 import classNames from "classnames";
 
@@ -68,32 +67,51 @@ const ScrollCurtainSection = () => {
         className="curtain-wrapper w-full h-[100vh] sticky top-0 z-[20] overflow-hidden flex"
       >
         <div className="curtain-animate w-full h-full relative flex items-center justify-center">
-          <div className="w-full h-full relative flex items-center justify-center dots-background">
+          <div
+            className="w-full h-full relative"
+            style={{
+              backgroundImage:
+                "radial-gradient(rgba(255, 255, 255, 0.8) 0.5px, rgba(0, 0, 0, 0.8) 0.5px)",
+              backgroundSize: "10px 10px",
+            }}
+          >
             {/* <img
               src="/images/monalisa/mona-pngframe.png"
               alt=""
               className="w-[700px] hover-img"
             /> */}
-            <div>
-              <p
-                className={classNames(
-                  "text-4xl font-bold",
-                  "inline-block text-[#FFFFFF] px-1 -mx-1 transition-shadow duration-500 ease-in-out hover:text-blue-600 hover:shadow-hover-custom"
-                )}
-              >
-                {"I'm the real one"}
-              </p>
-            </div>
-            <ParallaxTiltEffect />
-            <div>
-              <p
-                className={classNames(
-                  "text-4xl font-bold",
-                  "inline-block text-[#FFFFFF] px-1 -mx-1 transition-shadow duration-500 ease-in-out hover:text-yellow-500 hover:shadow-hover-custom"
-                )}
-              >
-                {"Hover over her"}
-              </p>
+            <div className="container flex flex-col gap-10 md:gap-0 md:flex-row items-center justify-center w-full h-full">
+              <div>
+                <p
+                  className={classNames(
+                    // "hidden md:block",
+                    "md:text-lg lg:text-4xl font-bold",
+                    "flex flex-col",
+                    "text-[#FFFFFF] px-1 -mx-1 transition-shadow duration-500 ease-in-out hover:text-blue-600 hover:shadow-hover-custom"
+                  )}
+                >
+                  <span>
+
+                  {"I'm the real one,"}
+                  </span>
+                  <span>
+                  Just $860 million
+                  </span>
+                </p>
+
+              </div>
+              <ParallaxTiltEffect />
+              <div>
+                <p
+                  className={classNames(
+                    // "hidden md:block",
+                    "md:text-lg lg:text-4xl font-bold",
+                    "inline-block text-[#FFFFFF] px-1 -mx-1 transition-shadow duration-500 ease-in-out hover:text-yellow-500 hover:shadow-hover-custom"
+                  )}
+                >
+                  {"Hover over her"}
+                </p>
+              </div>
             </div>
           </div>
 

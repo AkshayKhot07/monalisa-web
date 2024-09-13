@@ -1,10 +1,9 @@
 "use client";
 
-import { MONALISA_GRID_IMAGE1 } from "@/constants/images";
 import React, { useState, useEffect, useRef } from "react";
 
 const ParallaxTiltEffect = () => {
-  const containerRef = useRef(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   const [isActive, setIsActive] = useState(false);
   const [tiltValues, setTiltValues] = useState({
     rX: 0,
@@ -17,15 +16,15 @@ const ParallaxTiltEffect = () => {
     const container = containerRef.current;
     if (!container) return;
 
-    const handleMouseMove = (event) => {
+    const handleMouseMove = (event: MouseEvent) => {
       const rect = container.getBoundingClientRect();
       const offsetX = event.clientX - rect.left;
       const offsetY = event.clientY - rect.top;
       const w = container.offsetWidth;
       const h = container.offsetHeight;
 
-      let X = (offsetX - w / 2) / 3 / 3;
-      let Y = -(offsetY - h / 2) / 3 / 3;
+      const X = (offsetX - w / 2) / 3 / 3;
+      const Y = -(offsetY - h / 2) / 3 / 3;
 
       setTiltValues({
         rY: X,
@@ -55,10 +54,10 @@ const ParallaxTiltEffect = () => {
   const imageUrl = "/images/monalisa/mona-pngframe.png";
 
   return (
-    <div className="m-8 transform perspective-[100rem] cursor-pointer">
+    <div className="m-2 lg:m-8 transform perspective-[100rem] cursor-pointer">
       <div
         ref={containerRef}
-        className={`w-[30rem] h-[30rem] rounded-[1.6rem] p-16 flex items-end relative
+        className={`w-[25rem] h-[25rem] lg:w-[30rem] lg:h-[30rem] rounded-[1.6rem] p-2 lg:p-16 flex items-end relative
           ${
             isActive
               ? "transition-none"
@@ -82,7 +81,6 @@ const ParallaxTiltEffect = () => {
           }}
         />
         <div className="absolute inset-0" />{" "}
-        {/* Overlay for better text visibility */}
       </div>
     </div>
   );
