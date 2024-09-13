@@ -63,7 +63,8 @@ const HeroSection = () => {
       prevIndex >= slidesRef.current.length - 1 ? 0 : prevIndex + 1
     );
   };
-
+  
+  /*
   const handleSlideChange = (n: number) => {
     if (intervalRef.current) {
       clearInterval(intervalRef.current);
@@ -73,6 +74,7 @@ const HeroSection = () => {
         (prevIndex + n + slidesRef.current.length) % slidesRef.current.length
     );
   };
+  */
 
   const scrollToSection = () => {
     const section = document.querySelector("#curtain-section");

@@ -9,7 +9,7 @@ import {
 } from "@/constants/images";
 
 const FactsComponent = () => {
-  const { divRef, current, scrollPercent } = useScrollSection();
+  const { divRef, current } = useScrollSection();
 
   return (
     <section
